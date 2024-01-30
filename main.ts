@@ -337,6 +337,7 @@ let statusbar: StatusBarSprite = null
 let mySprite2: Sprite = null
 let mySprite: Sprite = null
 let Fases = 0
+let Win = 0
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -607,6 +608,19 @@ forever(function () {
             pause(800)
             game.gameOver(false)
         }
+    }
+})
+forever(function () {
+    for (let index = 0; index < 10000; index++) {
+        if (statusbar2.value == 100) {
+            Win += 1
+            pause(1000)
+        }
+    }
+})
+forever(function () {
+    if (Win == 10000) {
+        game.gameOver(true)
     }
 })
 forever(function () {
