@@ -597,7 +597,6 @@ forever(function () {
 })
 forever(function () {
     if (Fases == 1) {
-        pause(1800)
         mySprite4 = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -911,6 +910,7 @@ forever(function () {
             mySprite2.y += -20
             pause(200)
         }
+        pause(1500)
         Fases = 1
     }
 })
@@ -941,13 +941,16 @@ forever(function () {
                     ...........cccccfbdbbfc.............
                     .................fffff..............
                     `, SpriteKind.Projectile)
-                mySprite5.setPosition(mySprite.x, mySprite.vx)
-                for (let index = 0; index < 5; index++) {
-                    mySprite5.y += 18
+                mySprite5.setPosition(mySprite.x, mySprite.y)
+                for (let index = 0; index < 7; index++) {
+                    mySprite5.y += -18
+                    pause(100)
                     if (mySprite2.overlapsWith(mySprite5)) {
                         statusbar.value += -10
+                        sprites.destroy(mySprite5)
                     }
                 }
+                sprites.destroy(mySprite5)
             } else {
                 if (mySprite.overlapsWith(mySprite4)) {
                     statusbar2.value += -5
