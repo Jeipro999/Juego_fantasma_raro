@@ -611,7 +611,7 @@ forever(function () {
     }
 })
 forever(function () {
-    for (let index = 0; index < 10000; index++) {
+    for (let index = 0; index < 10000000000000000; index++) {
         if (statusbar2.value == 100) {
             Win += 1
             pause(1000)
@@ -619,7 +619,7 @@ forever(function () {
     }
 })
 forever(function () {
-    if (Win == 10000) {
+    if (Win == 10000000000000000) {
         game.gameOver(true)
     }
 })
