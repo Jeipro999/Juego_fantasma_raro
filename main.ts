@@ -746,7 +746,7 @@ forever(function () {
         sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
         sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
         sprites.destroyAllSpritesOfKind(SpriteKind.StatusBar)
-        game.splash("You lose")
+        game.gameOver(false)
     }
 })
 forever(function () {
@@ -1183,7 +1183,7 @@ forever(function () {
                 sprites.destroy(mySprite5)
             } else {
                 if (mySprite.overlapsWith(mySprite4)) {
-                    statusbar2.value += -5
+                    statusbar2.value += -40
                 }
             }
         }
