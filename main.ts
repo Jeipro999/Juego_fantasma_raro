@@ -113,8 +113,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     false
     )
     if (mySprite.overlapsWith(mySprite2)) {
-        statusbar.value += -50
-        mySprite.x += -100
+        statusbar.value += -10
+        if (Fases == 0) {
+            mySprite.x += -100
+        }
     }
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -328,8 +330,8 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 let mySprite5: Sprite = null
-let mySprite4: Sprite = null
 let Disparo_2 = 0
+let mySprite4: Sprite = null
 let mySprite3: Sprite = null
 let statusbar: StatusBarSprite = null
 let mySprite2: Sprite = null
@@ -609,6 +611,30 @@ forever(function () {
 })
 forever(function () {
     if (Fases == 1) {
+        mySprite4 = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . c c c . . . . . . 
+            . . . . . . a b a a . . . . . . 
+            . . . . . c b a f c a c . . . . 
+            . . . . c b b b f f a c c . . . 
+            . . . . b b f a b b a a c . . . 
+            . . . . c b f f b a f c a . . . 
+            . . . . . c a a c b b a . . . . 
+            . . . . . . c c c c . . . . . . 
+            . . . . . . . c . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.ProyectilFase2)
+        Disparo_2 = 1
+        pauseUntil(() => Fases == -2131)
+    }
+})
+forever(function () {
+    if (Fases == 1) {
         if (statusbar.value < 1) {
             for (let index = 0; index < 10; index++) {
                 statusbar.value += 10
@@ -729,32 +755,8 @@ forever(function () {
     }
 })
 forever(function () {
-    if (Fases == 1) {
-        mySprite4 = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . c c c . . . . . . 
-            . . . . . . a b a a . . . . . . 
-            . . . . . c b a f c a c . . . . 
-            . . . . c b b b f f a c c . . . 
-            . . . . b b f a b b a a c . . . 
-            . . . . c b f f b a f c a . . . 
-            . . . . . c a a c b b a . . . . 
-            . . . . . . c c c c . . . . . . 
-            . . . . . . . c . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, SpriteKind.ProyectilFase2)
-        Disparo_2 = 1
-        pauseUntil(() => Fases == -2131)
-    }
-})
-forever(function () {
     if (mySprite.overlapsWith(mySprite3)) {
-        statusbar2.value += -2
+        statusbar2.value += -5
     }
 })
 forever(function () {
@@ -1174,7 +1176,7 @@ forever(function () {
                     mySprite5.y += -18
                     pause(100)
                     if (mySprite2.overlapsWith(mySprite5)) {
-                        statusbar.value += -50
+                        statusbar.value += -10
                         sprites.destroy(mySprite5)
                     }
                 }
