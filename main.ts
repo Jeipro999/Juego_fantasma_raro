@@ -327,6 +327,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         pause(600)
     }
 })
+let mySprite5: Sprite = null
 let Disparo_2 = 0
 let mySprite4: Sprite = null
 let mySprite3: Sprite = null
@@ -489,31 +490,6 @@ mySprite3 = sprites.create(img`
     `, SpriteKind.Projectile)
 mySprite3.scale = 0.5
 forever(function () {
-    if (Fases == 1) {
-        pause(1800)
-        mySprite4 = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . c c c . . . . . . 
-            . . . . . . a b a a . . . . . . 
-            . . . . . c b a f c a c . . . . 
-            . . . . c b b b f f a c c . . . 
-            . . . . b b f a b b a a c . . . 
-            . . . . c b f f b a f c a . . . 
-            . . . . . c a a c b b a . . . . 
-            . . . . . . c c c c . . . . . . 
-            . . . . . . . c . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, SpriteKind.ProyectilFase2)
-        Disparo_2 = 1
-        pauseUntil(() => Fases == -2131)
-    }
-})
-forever(function () {
     pause(1000)
     if (statusbar2.value < 1) {
         animation.runImageAnimation(
@@ -615,21 +591,33 @@ forever(function () {
     }
 })
 forever(function () {
-    if (Disparo_2 == 1) {
-        mySprite4.setPosition(mySprite2.x, mySprite2.y)
-        pause(300)
-        mySprite4.setPosition(mySprite.x, mySprite2.y)
-        pause(300)
-        for (let index = 0; index < 10; index++) {
-            mySprite4.y += 10
-            pause(100)
-        }
-        pause(2000)
+    if (mySprite.x < 0) {
+        mySprite.x = 0
     }
 })
 forever(function () {
-    if (mySprite.x < 0) {
-        mySprite.x = 0
+    if (Fases == 1) {
+        pause(1800)
+        mySprite4 = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . c c c . . . . . . 
+            . . . . . . a b a a . . . . . . 
+            . . . . . c b a f c a c . . . . 
+            . . . . c b b b f f a c c . . . 
+            . . . . b b f a b b a a c . . . 
+            . . . . c b f f b a f c a . . . 
+            . . . . . c a a c b b a . . . . 
+            . . . . . . c c c c . . . . . . 
+            . . . . . . . c . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.ProyectilFase2)
+        Disparo_2 = 1
+        pauseUntil(() => Fases == -2131)
     }
 })
 forever(function () {
@@ -807,7 +795,6 @@ forever(function () {
             statusbar.value += 10
             pause(100)
         }
-        Fases = 1
         animation.runMovementAnimation(
         mySprite2,
         animation.animationPresets(animation.flyToCenter),
@@ -924,11 +911,62 @@ forever(function () {
             mySprite2.y += -20
             pause(200)
         }
+        Fases = 1
     }
 })
 forever(function () {
     if (mySprite.y < 74) {
         mySprite.y = 72
+    }
+})
+forever(function () {
+    if (Fases == 1) {
+        if (mySprite.overlapsWith(mySprite4)) {
+            if (controller.B.isPressed()) {
+                mySprite5 = sprites.create(img`
+                    .................ccfff..............
+                    ................cddbbf..............
+                    ...............cddbbf...............
+                    ..............fccbbcf............ccc
+                    ........ffffffccccccff.........ccbbc
+                    ......ffbbbbbbbbbbbbbcfff.....cdbbc.
+                    ....ffbbbbbbbbbcbcbbbbcccff..cddbbf.
+                    ....fbcbbbbbffbbcbcbbbcccccfffdbbf..
+                    ....fbbb1111ff1bcbcbbbcccccccbbbcf..
+                    .....fb11111111bbbbbbcccccccccbccf..
+                    ......fccc33cc11bbbbccccccccfffbbcf.
+                    .......fc131c111bbbcccccbdbc...fbbf.
+                    ........f33c111cbbbfdddddcc.....fbbf
+                    .........ff1111fbdbbfddcc........fff
+                    ...........cccccfbdbbfc.............
+                    .................fffff..............
+                    `, SpriteKind.Projectile)
+                mySprite5.setPosition(mySprite.x, mySprite.vx)
+                for (let index = 0; index < 5; index++) {
+                    mySprite5.y += 18
+                    if (mySprite2.overlapsWith(mySprite5)) {
+                        statusbar.value += -10
+                    }
+                }
+            } else {
+                if (mySprite.overlapsWith(mySprite4)) {
+                    statusbar2.value += -5
+                }
+            }
+        }
+    }
+})
+forever(function () {
+    if (Disparo_2 == 1) {
+        mySprite4.setPosition(mySprite2.x, mySprite2.y)
+        pause(300)
+        mySprite4.setPosition(mySprite.x, mySprite2.y)
+        pause(300)
+        for (let index = 0; index < 14; index++) {
+            mySprite4.y += 10
+            pause(100)
+        }
+        pause(1000)
     }
 })
 forever(function () {
