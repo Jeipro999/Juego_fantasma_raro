@@ -611,19 +611,6 @@ forever(function () {
     }
 })
 forever(function () {
-    for (let index = 0; index < 10000; index++) {
-        if (statusbar2.value == 100) {
-            Win += 1
-            pause(1000)
-        }
-    }
-})
-forever(function () {
-    if (Win == 10000) {
-        game.gameOver(true)
-    }
-})
-forever(function () {
     if (Fases == 1) {
         mySprite4 = sprites.create(img`
             . . . . . . . . . . . . . . . . 
