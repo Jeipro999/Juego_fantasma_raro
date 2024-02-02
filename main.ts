@@ -112,8 +112,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     100,
     false
     )
+    mySprite.startEffect(effects.fire, 1000)
     if (mySprite.overlapsWith(mySprite2)) {
-        statusbar.value += -10
+        statusbar.value += -80
         if (Fases == 0) {
             mySprite.x += -100
         }
@@ -635,132 +636,6 @@ forever(function () {
     }
 })
 forever(function () {
-    if (Fases == 1) {
-        if (statusbar.value < 1) {
-            for (let index = 0; index < 10; index++) {
-                statusbar.value += 10
-                pause(100)
-            }
-            Fases = 3
-            Disparo_2 = 5
-            sprites.destroy(mySprite4)
-        } else {
-        	
-        }
-    }
-})
-forever(function () {
-    pause(1000)
-    if (statusbar2.value < 1) {
-        animation.runImageAnimation(
-        mySprite,
-        [img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . 2 1 2 . . . . . . 
-            . . . . . . . 2 1 2 . . . . . . 
-            . . . . . . . 2 1 2 . . . . . . 
-            . . . . . . . 3 1 3 . . . . . . 
-            . . . . . . 2 3 1 3 2 . . . . . 
-            . . . . . . 2 1 1 1 2 . . . . . 
-            . . . . . . 2 1 1 1 3 . . . . . 
-            . . . . . . 3 1 1 1 3 . . . . . 
-            . . . . . . 3 1 1 1 3 . . . . . 
-            . . . . . . 3 1 1 1 3 . . . . . 
-            . . . . . . 2 3 1 3 2 . . . . . 
-            . . . . . . . 2 2 2 . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `,img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . 2 3 3 3 3 3 2 . . . . 
-            . . . . 3 1 1 1 1 1 1 1 3 . . . 
-            . . . . 1 1 1 1 1 1 1 1 1 . . . 
-            . . . 2 1 1 1 1 1 1 1 1 1 2 . . 
-            . . . 2 3 1 1 1 1 1 1 3 3 2 . . 
-            . . . . . . 2 2 2 2 2 . . . . . 
-            `,img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . 4 4 4 4 4 . . . . . . 
-            . . . 4 4 4 5 5 5 d 4 4 4 4 . . 
-            . . 4 d 5 d 5 5 5 d d d 4 4 . . 
-            . . 4 5 5 1 1 1 d d 5 5 5 4 . . 
-            . 4 5 5 5 1 1 1 5 1 1 5 5 4 4 . 
-            . 4 d d 1 1 5 5 5 1 1 5 5 d 4 . 
-            . 4 5 5 1 1 5 1 1 5 5 d d d 4 . 
-            . 2 5 5 5 d 1 1 1 5 1 1 5 5 2 . 
-            . 2 d 5 5 d 1 1 1 5 1 1 5 5 2 . 
-            . . 2 4 d d 5 5 5 5 d d 5 4 . . 
-            . . . 2 2 4 d 5 5 d d 4 4 . . . 
-            . . 2 2 2 2 2 4 4 4 2 2 2 . . . 
-            . . . 2 2 4 4 4 4 4 4 2 2 . . . 
-            . . . . . 2 2 2 2 2 2 . . . . . 
-            `,img`
-            . . . . 2 2 2 2 2 2 2 2 . . . . 
-            . . . 2 4 4 4 5 5 4 4 4 2 2 2 . 
-            . 2 2 5 5 d 4 5 5 5 4 4 4 4 2 . 
-            . 2 4 5 5 5 5 d 5 5 5 4 5 4 2 2 
-            . 2 4 d d 5 5 5 5 5 5 d 4 4 4 2 
-            2 4 5 5 d 5 5 5 d d d 5 5 5 4 4 
-            2 4 5 5 4 4 4 d 5 5 d 5 5 5 4 4 
-            4 4 4 4 . . 2 4 5 5 . . 4 4 4 4 
-            . . b b b b 2 4 4 2 b b b b . . 
-            . b d d d d 2 4 4 2 d d d d b . 
-            b d d b b b 2 4 4 2 b b b d d b 
-            b d d b b b b b b b b b b d d b 
-            b b d 1 1 3 1 1 d 1 d 1 1 d b b 
-            . . b b d d 1 1 3 d d 1 b b . . 
-            . . 2 2 4 4 4 4 4 4 4 4 2 2 . . 
-            . . . 2 2 4 4 4 4 4 2 2 2 . . . 
-            `,img`
-            . . . . . . . . b b . . . . . . 
-            . . . . . . . . b b . . . . . . 
-            . . . b b b . . . . . . . . . . 
-            . . b d d b . . . . . . . b b . 
-            . b d d d b . . . . . . b d d b 
-            . b d d b . . . . b b . b d d b 
-            . b b b . . . . . b b . . b b . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . b b b d d d d d d b b b . . 
-            . b d c c c b b b b c c d d b . 
-            b d d c b . . . . . b c c d d b 
-            c d d b b . . . . . . b c d d c 
-            c b d d d b b . . . . b d d c c 
-            . c c b d d d d b . c c c c c c 
-            . . . c c c c c c . . . . . . . 
-            `],
-        120,
-        false
-        )
-        pause(700)
-        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
-        sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
-        sprites.destroyAllSpritesOfKind(SpriteKind.StatusBar)
-        game.gameOver(false)
-    }
-})
-forever(function () {
-    if (mySprite.x < 0) {
-        mySprite.x = 0
-    }
-})
-forever(function () {
-    if (mySprite.overlapsWith(mySprite3)) {
-        statusbar2.value += -5
-    }
-})
-forever(function () {
     pause(100)
     if (Fases == 3) {
         mySprite2.y = randint(76, 120)
@@ -858,6 +733,82 @@ forever(function () {
         0,
         false
         )
+    }
+})
+forever(function () {
+    if (Fases == 1) {
+        if (statusbar.value < 1) {
+            for (let index = 0; index < 10; index++) {
+                statusbar.value += 10
+                pause(100)
+            }
+            Fases = 3
+            Disparo_2 = 5
+            sprites.destroy(mySprite4)
+        } else {
+        	
+        }
+    }
+})
+forever(function () {
+    pause(1000)
+    if (statusbar2.value < 1) {
+        mySprite.startEffect(effects.disintegrate)
+        pause(500)
+        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+        sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
+        sprites.destroyAllSpritesOfKind(SpriteKind.StatusBar)
+        game.gameOver(false)
+    }
+})
+forever(function () {
+    if (mySprite.x < 0) {
+        mySprite.x = 0
+    }
+})
+forever(function () {
+    if (Fases == 1) {
+        if (mySprite.overlapsWith(mySprite4)) {
+            if (controller.B.isPressed()) {
+                mySprite5 = sprites.create(img`
+                    .................ccfff..............
+                    ................cddbbf..............
+                    ...............cddbbf...............
+                    ..............fccbbcf............ccc
+                    ........ffffffccccccff.........ccbbc
+                    ......ffbbbbbbbbbbbbbcfff.....cdbbc.
+                    ....ffbbbbbbbbbcbcbbbbcccff..cddbbf.
+                    ....fbcbbbbbffbbcbcbbbcccccfffdbbf..
+                    ....fbbb1111ff1bcbcbbbcccccccbbbcf..
+                    .....fb11111111bbbbbbcccccccccbccf..
+                    ......fccc33cc11bbbbccccccccfffbbcf.
+                    .......fc131c111bbbcccccbdbc...fbbf.
+                    ........f33c111cbbbfdddddcc.....fbbf
+                    .........ff1111fbdbbfddcc........fff
+                    ...........cccccfbdbbfc.............
+                    .................fffff..............
+                    `, SpriteKind.Projectile)
+                mySprite5.setPosition(mySprite.x, mySprite.y)
+                for (let index = 0; index < 7; index++) {
+                    mySprite5.y += -18
+                    pause(100)
+                    if (mySprite2.overlapsWith(mySprite5)) {
+                        statusbar.value += -10
+                        sprites.destroy(mySprite5)
+                    }
+                }
+                sprites.destroy(mySprite5)
+            } else {
+                if (mySprite.overlapsWith(mySprite4)) {
+                    statusbar2.value += -40
+                }
+            }
+        }
+    }
+})
+forever(function () {
+    if (mySprite.overlapsWith(mySprite3)) {
+        statusbar2.value += -5
     }
 })
 forever(function () {
@@ -1151,46 +1102,6 @@ forever(function () {
     }
 })
 forever(function () {
-    if (Fases == 1) {
-        if (mySprite.overlapsWith(mySprite4)) {
-            if (controller.B.isPressed()) {
-                mySprite5 = sprites.create(img`
-                    .................ccfff..............
-                    ................cddbbf..............
-                    ...............cddbbf...............
-                    ..............fccbbcf............ccc
-                    ........ffffffccccccff.........ccbbc
-                    ......ffbbbbbbbbbbbbbcfff.....cdbbc.
-                    ....ffbbbbbbbbbcbcbbbbcccff..cddbbf.
-                    ....fbcbbbbbffbbcbcbbbcccccfffdbbf..
-                    ....fbbb1111ff1bcbcbbbcccccccbbbcf..
-                    .....fb11111111bbbbbbcccccccccbccf..
-                    ......fccc33cc11bbbbccccccccfffbbcf.
-                    .......fc131c111bbbcccccbdbc...fbbf.
-                    ........f33c111cbbbfdddddcc.....fbbf
-                    .........ff1111fbdbbfddcc........fff
-                    ...........cccccfbdbbfc.............
-                    .................fffff..............
-                    `, SpriteKind.Projectile)
-                mySprite5.setPosition(mySprite.x, mySprite.y)
-                for (let index = 0; index < 7; index++) {
-                    mySprite5.y += -18
-                    pause(100)
-                    if (mySprite2.overlapsWith(mySprite5)) {
-                        statusbar.value += -10
-                        sprites.destroy(mySprite5)
-                    }
-                }
-                sprites.destroy(mySprite5)
-            } else {
-                if (mySprite.overlapsWith(mySprite4)) {
-                    statusbar2.value += -40
-                }
-            }
-        }
-    }
-})
-forever(function () {
     if (mySprite.y < 74) {
         mySprite.y = 72
     }
@@ -1310,6 +1221,8 @@ forever(function () {
         for (let index = 0; index < 14; index++) {
             mySprite4.y += 10
             pause(100)
+            mySprite4.startEffect(effects.fire)
+            mySprite4.startEffect(effects.fire)
         }
         pause(1000)
     }
