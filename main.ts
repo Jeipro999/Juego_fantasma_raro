@@ -640,6 +640,9 @@ forever(function () {
     if (Fases == 3) {
         mySprite2.y = randint(76, 120)
         mySprite2.x = randint(0, 160)
+        for (let index = 0; index < 4; index++) {
+            mySprite2.startEffect(effects.halo)
+        }
         pause(1800)
         animation.runImageAnimation(
         mySprite2,
@@ -793,7 +796,7 @@ forever(function () {
                     mySprite5.y += -18
                     pause(100)
                     if (mySprite2.overlapsWith(mySprite5)) {
-                        statusbar.value += -10
+                        statusbar.value += -100
                         sprites.destroy(mySprite5)
                     }
                 }
