@@ -466,6 +466,9 @@ mySprite = sprites.create(assets.image`myImage`, SpriteKind.Player)
 controller.moveSprite(mySprite)
 mySprite.changeScale(0.5, ScaleAnchor.Middle)
 mySprite2 = sprites.create(assets.image`myImage0`, SpriteKind.Enemy)
+for (let index = 0; index < 15; index++) {
+    mySprite2.startEffect(effects.halo)
+}
 mySprite2.setScale(1, ScaleAnchor.Middle)
 mySprite.y = 100
 mySprite2.x = 150
