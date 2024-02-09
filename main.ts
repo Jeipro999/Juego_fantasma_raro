@@ -333,6 +333,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 let mySprite5: Sprite = null
 let Disparo_2 = 0
 let mySprite4: Sprite = null
+let mySprite6: Sprite = null
 let mySprite3: Sprite = null
 let statusbar: StatusBarSprite = null
 let mySprite2: Sprite = null
@@ -513,104 +514,125 @@ forever(function () {
 forever(function () {
     if (Fases == 3) {
         if (statusbar.value < 1) {
-            Fases = 66
+            Fases = 100
             sprites.destroy(statusbar)
             sprites.destroy(statusbar2)
-            mySprite.setPosition(53, 68)
-            mySprite2.setPosition(68, 42)
-            mySprite2.sayText("Oye")
-            pause(1300)
-            mySprite.sayText("Si?")
-            pause(1300)
-            mySprite2.sayText("¿Por qué me matas?")
-            pause(1300)
-            mySprite.sayText("Es culpa del guión del videojuego")
-            pause(1300)
-            mySprite2.sayText("¿Y tu quieres matarme?")
-            pause(1300)
-            mySprite.sayText("No")
-            pause(1300)
-            mySprite2.sayText("¿Entonces?")
-            pause(1300)
-            mySprite.sayText("Tienes razon")
-            pause(1300)
-            mySprite.setScale(3, ScaleAnchor.Middle)
+            mySprite2.startEffect(effects.disintegrate)
+            pause(1200)
+            sprites.destroy(mySprite2)
+            mySprite6 = sprites.create(img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . b 5 5 b . . . . . . . . . 
+                . . . . b b b b b b . . . . . . 
+                . . . b 5 5 5 5 5 b b . . . . . 
+                . . b 5 5 5 5 5 5 5 b b b b b . 
+                . . b 5 5 5 5 5 5 5 5 b 5 d b . 
+                . . f 4 d 5 f 1 d 5 b 5 5 b . . 
+                . . c 4 4 5 f f 1 b 5 5 d b . . 
+                . b 4 4 4 4 b f d 5 5 5 b d b b 
+                b 4 4 4 4 4 4 5 b 5 5 d c d d b 
+                . b 5 5 5 5 5 5 5 b c c d d d c 
+                . b 5 5 5 5 5 5 5 d d d d d b c 
+                . b d 5 5 5 5 5 d d d d d d c . 
+                . . b b 5 5 5 d d d d d b c . . 
+                . . . b b c c c c c c c c . . . 
+                `, SpriteKind.Player)
+            mySprite6.setPosition(131, 17)
             animation.runImageAnimation(
-            mySprite,
+            mySprite6,
             [img`
                 . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . 4 4 . . . . . . . 
-                . . . . . . 4 5 5 4 . . . . . . 
-                . . . . . . 2 5 5 2 . . . . . . 
-                . . . . . . . 2 2 . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                `,img`
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . 4 . . . . . 
-                . . . . 2 . . . . 4 4 . . . . . 
-                . . . . 2 4 . . 4 5 4 . . . . . 
-                . . . . . 2 4 d 5 5 4 . . . . . 
-                . . . . . 2 5 5 5 5 4 . . . . . 
-                . . . . . . 2 5 5 5 5 4 . . . . 
-                . . . . . . 2 5 4 2 4 4 . . . . 
-                . . . . . . 4 4 . . 2 4 4 . . . 
-                . . . . . 4 4 . . . . . . . . . 
+                . . . . . . . 2 1 2 . . . . . . 
+                . . . . . . . 2 1 2 . . . . . . 
+                . . . . . . . 2 1 2 . . . . . . 
+                . . . . . . . 3 1 3 . . . . . . 
+                . . . . . . 2 3 1 3 2 . . . . . 
+                . . . . . . 2 1 1 1 2 . . . . . 
+                . . . . . . 2 1 1 1 3 . . . . . 
+                . . . . . . 3 1 1 1 3 . . . . . 
+                . . . . . . 3 1 1 1 3 . . . . . 
+                . . . . . . 3 1 1 1 3 . . . . . 
+                . . . . . . 2 3 1 3 2 . . . . . 
+                . . . . . . . 2 2 2 . . . . . . 
                 . . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . . 
                 `,img`
-                . 3 . . . . . . . . . . . 4 . . 
-                . 3 3 . . . . . . . . . 4 4 . . 
-                . 3 d 3 . . 4 4 . . 4 4 d 4 . . 
-                . . 3 5 3 4 5 5 4 4 d d 4 4 . . 
-                . . 3 d 5 d 1 1 d 5 5 d 4 4 . . 
-                . . 4 5 5 1 1 1 1 5 1 1 5 4 . . 
-                . 4 5 5 5 5 1 1 5 1 1 1 d 4 4 . 
-                . 4 d 5 1 1 5 5 5 1 1 1 5 5 4 . 
-                . 4 4 5 1 1 5 5 5 5 5 d 5 5 4 . 
-                . . 4 3 d 5 5 5 d 5 5 d d d 4 . 
-                . 4 5 5 d 5 5 5 d d d 5 5 4 . . 
-                . 4 5 5 d 3 5 d d 3 d 5 5 4 . . 
-                . 4 4 d d 4 d d d 4 3 d d 4 . . 
-                . . 4 5 4 4 4 4 4 4 4 4 4 . . . 
-                . 4 5 4 . . 4 4 4 . . . 4 4 . . 
-                . 4 4 . . . . . . . . . . 4 4 . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . 2 3 3 3 3 3 2 . . . . 
+                . . . . 3 1 1 1 1 1 1 1 3 . . . 
+                . . . . 1 1 1 1 1 1 1 1 1 . . . 
+                . . . 2 1 1 1 1 1 1 1 1 1 2 . . 
+                . . . 2 3 1 1 1 1 1 1 3 3 2 . . 
+                . . . . . . 2 2 2 2 2 . . . . . 
                 `,img`
                 . . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . . 
-                . . . . . b b . b b b . . . . . 
-                . . . . b 1 1 b 1 1 1 b . . . . 
-                . . b b 3 1 1 d d 1 d d b b . . 
-                . b 1 1 d d b b b b b 1 1 b . . 
-                . b 1 1 1 b . . . . . b d d b . 
-                . . 3 d d b . . . . . b d 1 1 b 
-                . b 1 d 3 . . . . . . . b 1 1 b 
-                . b 1 1 b . . . . . . b b 1 d b 
-                . b 1 d b . . . . . . b d 3 d b 
-                . b b d d b . . . . b d d d b . 
-                . b d d d d b . b b 3 d d 3 b . 
-                . . b d d 3 3 b d 3 3 b b b . . 
-                . . . b b b d d d d d b . . . . 
-                . . . . . . b b b b b . . . . . 
+                . . . . . 4 4 4 4 4 . . . . . . 
+                . . . 4 4 4 5 5 5 d 4 4 4 4 . . 
+                . . 4 d 5 d 5 5 5 d d d 4 4 . . 
+                . . 4 5 5 1 1 1 d d 5 5 5 4 . . 
+                . 4 5 5 5 1 1 1 5 1 1 5 5 4 4 . 
+                . 4 d d 1 1 5 5 5 1 1 5 5 d 4 . 
+                . 4 5 5 1 1 5 1 1 5 5 d d d 4 . 
+                . 2 5 5 5 d 1 1 1 5 1 1 5 5 2 . 
+                . 2 d 5 5 d 1 1 1 5 1 1 5 5 2 . 
+                . . 2 4 d d 5 5 5 5 d d 5 4 . . 
+                . . . 2 2 4 d 5 5 d d 4 4 . . . 
+                . . 2 2 2 2 2 4 4 4 2 2 2 . . . 
+                . . . 2 2 4 4 4 4 4 4 2 2 . . . 
+                . . . . . 2 2 2 2 2 2 . . . . . 
+                `,img`
+                . . . . 2 2 2 2 2 2 2 2 . . . . 
+                . . . 2 4 4 4 5 5 4 4 4 2 2 2 . 
+                . 2 2 5 5 d 4 5 5 5 4 4 4 4 2 . 
+                . 2 4 5 5 5 5 d 5 5 5 4 5 4 2 2 
+                . 2 4 d d 5 5 5 5 5 5 d 4 4 4 2 
+                2 4 5 5 d 5 5 5 d d d 5 5 5 4 4 
+                2 4 5 5 4 4 4 d 5 5 d 5 5 5 4 4 
+                4 4 4 4 . . 2 4 5 5 . . 4 4 4 4 
+                . . b b b b 2 4 4 2 b b b b . . 
+                . b d d d d 2 4 4 2 d d d d b . 
+                b d d b b b 2 4 4 2 b b b d d b 
+                b d d b b b b b b b b b b d d b 
+                b b d 1 1 3 1 1 d 1 d 1 1 d b b 
+                . . b b d d 1 1 3 d d 1 b b . . 
+                . . 2 2 4 4 4 4 4 4 4 4 2 2 . . 
+                . . . 2 2 4 4 4 4 4 2 2 2 . . . 
+                `,img`
+                . . . . . . . . b b . . . . . . 
+                . . . . . . . . b b . . . . . . 
+                . . . b b b . . . . . . . . . . 
+                . . b d d b . . . . . . . b b . 
+                . b d d d b . . . . . . b d d b 
+                . b d d b . . . . b b . b d d b 
+                . b b b . . . . . b b . . b b . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . b b b d d d d d d b b b . . 
+                . b d c c c b b b b c c d d b . 
+                b d d c b . . . . . b c c d d b 
+                c d d b b . . . . . . b c d d c 
+                c b d d d b b . . . . b d d c c 
+                . c c b d d d d b . c c c c c c 
+                . . . c c c c c c . . . . . . . 
                 `],
-            200,
+            500,
             false
             )
-            pause(800)
-            game.gameOver(false)
+            for (let index = 0; index < 10; index++) {
+                mySprite6.y += -8
+            }
         }
     }
 })
